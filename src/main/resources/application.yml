@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://brunocasotto:123456@ds155315.mlab.com:55315/product
+      database: product
