@@ -43,7 +43,7 @@ public class ProductController {
     @RequestMapping(value = "product", method=POST)
     public Product saveProduct() {
         product = new Product("CasottoProduct", 1300.00);
-        System.out.println("calling POST");
-        return product;
+        Product productReturn = repository.insert(product);
+        return productReturn;
     }
 }
