@@ -4,10 +4,9 @@ import com.spring.project.springproject.models.Product;
 import com.spring.project.springproject.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,9 +28,9 @@ public class ProductController {
         return ResponseEntity.ok(list);
     }
 
-    @RequestMapping(path="/product/{name}", method=GET)
-    public ResponseEntity<Product> view(@PathVariable String name){
-        Product product = repository.findOne(name);
+    @RequestMapping(path="/product/getBySku/{sku}", method=GET)
+    public ResponseEntity<Product> view(@PathVariable String sku){
+        product = repository.findOne(sku);
 
         if(Objects.isNull(product)){
             return ResponseEntity.noContent().build();
@@ -40,10 +39,13 @@ public class ProductController {
         }
     }
 
-    @RequestMapping(value = "product", method=POST)
-    public Product saveProduct() {
-        product = new Product("CasottoProduct", 1300.00);
-        Product productReturn = repository.insert(product);
-        return productReturn;
+    @RequestMapping(value = "product", method=POST,
+            consumes = "application/json")
+    public ResponseEntity<Product> saveProduct(@RequestParam(value="sku", required=true) final String sku,
+                               @RequestParam(value="name", required=true) final String name,
+                               @RequestParam(name = "price", required = true) final Double price,
+                               @RequestParam(name = "category", required = true) final String category) {
+        product = new Product(sku.toString(), name.toString(), 100.00, category.toString());
+        return ResponseEntity.ok(repository.insert(product));
     }
 }
