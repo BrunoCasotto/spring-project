@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -15,6 +16,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class BannerController {
     private IBannerDao bannerDaoInterface;
     private IBanner bannerInterface;
+
+    @Autowired
+    public void instanceDependency(ImageBannerDao bannerDao) {
+        bannerDaoInterface = bannerDao;
+    }
 
     @RequestMapping(value = "banner/imageBanner", method=POST)
     public ResponseEntity<?> insertImageBanner(@RequestParam(value="id", required=true) final String id,
@@ -26,7 +32,6 @@ public class BannerController {
                                   @RequestParam(value="imageLink", required=true) final String imageLink) {
 
         bannerInterface = new ImageBanner(id,websiteId,type,platform,imageUrl,imageLink);
-        bannerDaoInterface = new ImageBannerDao();
         return  ResponseEntity.ok(bannerDaoInterface.insert(bannerInterface));
     }
 }
