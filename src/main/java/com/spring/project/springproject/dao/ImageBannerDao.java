@@ -1,10 +1,12 @@
 package com.spring.project.springproject.dao;
 
 import com.spring.project.springproject.models.IBanner;
-import com.spring.project.springproject.models.ImageBanner;import com.spring.project.springproject.repositories.ImageBannerRepository;
+import com.spring.project.springproject.models.ImageBanner;
+import com.spring.project.springproject.repositories.ImageBannerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Service
 public class ImageBannerDao implements IBannerDao {
 
     @Autowired
