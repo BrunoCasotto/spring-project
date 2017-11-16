@@ -1,10 +1,10 @@
 package com.spring.project.springproject.models;
 
 public class Banner implements IBanner{
-    private String id;
-    private String webstoreId;
-    private String type;
-    private String platform;
+    protected String id;
+    protected String webstoreId;
+    protected String type;
+    protected String platform;
 
     public String getId() {
         return id;

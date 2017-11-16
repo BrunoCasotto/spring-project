@@ -4,13 +4,11 @@ public class ImageBanner extends Banner {
     private String imageUrl;
     private String imageLink;
 
-    public ImageBanner (String id, String webstoreId,
-                        String type, String platform,
-                        String imageUrl, String imageLink) {
-        super.setId(id);
-        super.setType(type);
-        super.setWebstoreId(webstoreId);
-        super.setPlatform(platform);
+    public ImageBanner (String id, String webstoreId, String type, String platform, String imageUrl, String imageLink) {
+        super.id = id;
+        super.type = type;
+        super.webstoreId = webstoreId;
+        super.platform = platform;
         this.imageUrl = imageUrl;
         this.imageLink = imageLink;
     }
