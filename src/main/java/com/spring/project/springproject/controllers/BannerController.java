@@ -1,6 +1,7 @@
 package com.spring.project.springproject.controllers;
 
 import com.spring.project.springproject.dao.IBannerDao;
+import com.spring.project.springproject.models.IBanner;
 import com.spring.project.springproject.models.ImageBanner;
 import com.spring.project.springproject.dao.ImageBannerDao;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class BannerController {
-    private IBannerDao bannerInterface;
+    private IBannerDao bannerDaoInterface;
+    private IBanner bannerInterface;
 
     @RequestMapping(value = "banner/imageBanner", method=POST)
     public ResponseEntity<?> insertImageBanner(@RequestParam(value="id", required=true) final String id,
@@ -22,9 +24,9 @@ public class BannerController {
                                   @RequestParam(value="campaign", required=true) final String campaign,
                                   @RequestParam(value="imageUrl", required=true) final String imageUrl  ,
                                   @RequestParam(value="imageLink", required=true) final String imageLink) {
-        final ImageBanner imageBanner;
-        imageBanner = new ImageBanner(id,websiteId,type,platform,imageUrl,imageLink);
-        bannerInterface = new ImageBannerDao();
-        return  ResponseEntity.ok(bannerInterface.insert(imageBanner));
+
+        bannerInterface = new ImageBanner(id,websiteId,type,platform,imageUrl,imageLink);
+        bannerDaoInterface = new ImageBannerDao();
+        return  ResponseEntity.ok(bannerDaoInterface.insert(bannerInterface));
     }
 }

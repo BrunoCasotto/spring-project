@@ -1,6 +1,6 @@
 package com.spring.project.springproject.models;
 
-public class Banner {
+public class Banner implements IBanner{
     private String id;
     private String webstoreId;
     private String type;
