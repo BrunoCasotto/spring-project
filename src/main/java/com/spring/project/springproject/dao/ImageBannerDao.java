@@ -12,6 +12,7 @@ public class ImageBannerDao implements IBannerDao {
     @Autowired
     private ImageBannerRepository imageBannerRepository;
 
+    @Override
     public ImageBanner insert(IBanner banner){
         try {
             return imageBannerRepository.insert((ImageBanner) banner);
