@@ -2,7 +2,7 @@ package com.spring.project.springproject.models;
 
 public class Banner implements IBanner{
     protected String id;
-    protected String webstoreId;
+    protected String websiteId;
     protected String type;
     protected String platform;
 
@@ -14,12 +14,12 @@ public class Banner implements IBanner{
         this.id = id;
     }
 
-    public String getWebstoreId() {
-        return webstoreId;
+    public String getwebsiteId() {
+        return websiteId;
     }
 
-    public void setWebstoreId(String webstoreId) {
-        this.webstoreId = webstoreId;
+    public void setwebsiteId(String webstoreId) {
+        this.websiteId = webstoreId;
     }
 
     public String getType() {
