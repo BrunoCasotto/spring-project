@@ -1,5 +1,6 @@
 package com.spring.project.springproject.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.project.springproject.dao.HtmlBannerDao;
 import com.spring.project.springproject.dao.IBannerDao;
 import com.spring.project.springproject.dao.ListBannerDao;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Map;
+
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -37,20 +40,15 @@ public class BannerController {
     }
 
     @RequestMapping(value = "banner/imageBanner", method=POST)
-    public ResponseEntity<?> insertImageBanner(@RequestParam(value="id", required=true) final String id,
-                                  @RequestParam(value="websiteId", required=true) final String websiteId,
-                                  @RequestParam(value="type", required=true) final String type,
-                                  @RequestParam(value="platform", required=true) final String platform,
-                                  @RequestParam(value="campaign", required=false) final String campaign,
-                                  @RequestParam(value="imageUrl", required=true) final String imageUrl  ,
-                                  @RequestParam(value="imageLink", required=true) final String imageLink,
-                                  @RequestBody ObjectNode request,
+    public ResponseEntity<?> insertImageBanner(@RequestBody Map<String, Object> request,
                                   BindingResult bindingResult) {
 
-        final BannerValidator validator = new BannerValidator();
-        validator.validate(request, bindingResult);
+        final ObjectMapper mapper = new ObjectMapper();
+        bannerInterface = mapper.convertValue(request, ImageBanner.class);
 
-        bannerInterface = new ImageBanner(id,websiteId,type,platform,imageUrl,imageLink);
+//        final BannerValidator validator = new BannerValidator();
+//        validator.validate(bannerInterface, bindingResult);
+
         return ResponseEntity.ok(imageBannerDaoInterface.insert(bannerInterface));
     }
 }

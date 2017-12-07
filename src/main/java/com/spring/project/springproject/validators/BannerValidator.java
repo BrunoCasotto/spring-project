@@ -1,6 +1,7 @@
 package com.spring.project.springproject.validators;
 
 import com.spring.project.springproject.models.Banner;
+import com.spring.project.springproject.models.ImageBanner;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -15,7 +16,6 @@ public class BannerValidator implements Validator {
     }
 
     public void validate(Object obj, Errors e) {
-        ValidationUtils.rejectIfEmpty(e, "id", "id.empty");
-        ValidationUtils.rejectIfEmpty(e, "websiteId", "websiteId.empty");
+        ValidationUtils.rejectIfEmpty(e, "imageUrl", "imageUrl.empty");
     }
 }

@@ -14,12 +14,12 @@ public class Banner implements IBanner{
         this.id = id;
     }
 
-    public String getwebsiteId() {
+    public String getWebsiteId() {
         return websiteId;
     }
 
-    public void setwebsiteId(String webstoreId) {
-        this.websiteId = webstoreId;
+    public void setWebsiteId(String websiteId) {
+        this.websiteId = websiteId;
     }
 
     public String getType() {
