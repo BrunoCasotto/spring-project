@@ -1,7 +1,7 @@
 package com.spring.project.springproject.models;
 import java.util.ArrayList;
 
-public class ListBanner {
+public class ListBanner extends Banner implements IBanner {
     private ArrayList<String> imagesUrl;
     private ArrayList<String> imagesLink;
 

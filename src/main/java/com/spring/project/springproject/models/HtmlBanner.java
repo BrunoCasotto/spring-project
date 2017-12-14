@@ -1,6 +1,6 @@
 package com.spring.project.springproject.models;
 
-public class HtmlBanner extends Banner {
+public class HtmlBanner extends Banner implements IBanner {
     public String getHtmlValue() {
         return htmlValue;
     }
