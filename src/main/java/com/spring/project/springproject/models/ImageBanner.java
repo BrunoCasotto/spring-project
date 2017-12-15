@@ -1,5 +1,7 @@
 package com.spring.project.springproject.models;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 public class ImageBanner extends Banner {
     private String imageUrl;
     private String imageLink;
@@ -12,6 +14,7 @@ public class ImageBanner extends Banner {
         this.imageUrl = imageUrl;
     }
 
+    @Getter
     public String getImageLink() {
         return imageLink;
     }

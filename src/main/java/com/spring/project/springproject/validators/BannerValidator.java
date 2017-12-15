@@ -15,6 +15,11 @@ public class BannerValidator implements Validator {
         return Banner.class.isAssignableFrom(banner);
     }
 
+    /**
+     * Basic validation and delegate especifics validations banner
+     * @param obj
+     * @param e
+     */
     public void validate(Object obj, Errors e) {
         ValidationUtils.rejectIfEmpty(e, "imageUrl", "imageUrl.empty");
     }

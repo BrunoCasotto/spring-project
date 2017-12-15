@@ -44,8 +44,11 @@ public class BannerController {
                                   BindingResult bindingResult) {
 
         bannerInterface = bannerFactoryInterface.getBannerInstance(request);
-//        final BannerValidator validator = new BannerValidator();
-//        validator.validate(bannerInterface, bindingResult);
+
+        final BannerValidator validator = new BannerValidator();
+        validator.validate(bannerInterface, bindingResult);
+
         return ResponseEntity.ok(imageBannerDaoInterface.insert(bannerInterface));
     }
+
 }
