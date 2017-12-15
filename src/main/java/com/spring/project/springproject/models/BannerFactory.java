@@ -14,7 +14,6 @@ public class BannerFactory implements IBannerFactory {
     public IBanner getBannerInstance(Map<String, Object> banner) {
         final ObjectMapper mapper = new ObjectMapper();
         final String bannerType = banner.get("type").toString();
-        final String bannerTYpe = BannerType.IMAGE_BANNER.value();
 
         switch (bannerType) {
             case "image":
